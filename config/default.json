@@ -1,0 +1,80 @@
+{
+  "theme": {
+    "accent": "#7aa8ff",
+    "accent2": "#a98bf5",
+    "surfaceOpacity": 0.55,
+    "radius": 14,
+    "font": "Inter",
+    "monoFont": "JetBrains Mono"
+  },
+
+  "bar": {
+    "position": "top",
+    "height": 40,
+    "left": ["logo", "workspaces"],
+    "center": ["clock"],
+    "right": ["tray", "indicators", "battery", "power"]
+  },
+
+  "dock": {
+    "enabled": true,
+    "pinned": ["firefox", "kitty", "code", "nautilus", "spotify"],
+    "iconSize": 26,
+    "autohide": true,
+    "onlyPrimaryMonitor": true
+  },
+
+  "launcher": {
+    "maxResults": 8,
+    "askAiPrefix": "?"
+  },
+
+  "notifications": {
+    "timeout": 5000,
+    "maxPopups": 4,
+    "position": "top-right"
+  },
+
+  "weather": {
+    "enabled": true,
+    "location": "auto",
+    "units": "metric"
+  },
+
+  "ai": {
+    "provider": "xai",
+    "model": "grok-4",
+    "baseUrl": null,
+    "temperature": 0.7,
+    "maxTokens": 2048,
+    "streaming": true,
+    "historyLimit": 20,
+    "systemPrompt": "You are Aether, the assistant built into the Aether desktop shell on Linux. Be concise and direct. Prefer concrete commands and short code blocks over prose. When the user shares logs or errors, diagnose the actual cause instead of listing generic possibilities. Never invent file paths or package names.",
+    "quickActions": [
+      {
+        "title": "Explain this",
+        "subtitle": "From clipboard",
+        "icon": "dialog-question-symbolic",
+        "prompt": "Explain this clearly and briefly:\n\n{{clipboard}}"
+      },
+      {
+        "title": "Fix this command",
+        "subtitle": "From clipboard",
+        "icon": "utilities-terminal-symbolic",
+        "prompt": "This shell command or config is wrong. Tell me why and give me the corrected version:\n\n{{clipboard}}"
+      },
+      {
+        "title": "Debug my system",
+        "subtitle": "Read recent errors",
+        "icon": "dialog-warning-symbolic",
+        "prompt": "Here are my recent system errors:\n\n{{journal}}\n\nMy system: {{hostinfo}}\n\nWhat is actually going wrong, and what should I do about it?"
+      },
+      {
+        "title": "Summarize",
+        "subtitle": "From clipboard",
+        "icon": "view-list-symbolic",
+        "prompt": "Summarize this in at most five bullet points:\n\n{{clipboard}}"
+      }
+    ]
+  }
+}
