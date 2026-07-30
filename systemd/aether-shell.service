@@ -1,0 +1,22 @@
+[Unit]
+Description=Aether Shell (GTK4 Wayland desktop shell)
+Documentation=https://github.com/cursed-goblin/aether-shell
+PartOf=graphical-session.target
+After=graphical-session.target
+ConditionEnvironment=WAYLAND_DISPLAY
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/aether-shell run
+ExecReload=/usr/bin/astal -i aether reload
+Restart=on-failure
+RestartSec=2
+TimeoutStopSec=5
+Slice=session.slice
+
+# The shell reads API keys from the keyring or ~/.config/aether/secrets.json.
+# Do NOT put keys in this unit file - Environment= values are world readable
+# via `systemctl --user show`.
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,0 +1,22 @@
+# build output
+dist/
+node_modules/
+*.tsbuildinfo
+
+# compiled styles
+style/*.css
+style/*.css.map
+
+# NEVER commit these
+secrets.json
+.env
+.env.*
+*.key
+
+# editor / os
+.vscode/
+.idea/
+*.swp
+.DS_Store
+result
+result-*

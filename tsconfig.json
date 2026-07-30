@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "strict": true,
+    "target": "ES2022",
+    "moduleResolution": "Bundler",
+    "module": "ES2022",
+    "lib": ["ES2022"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "astal/gtk4",
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": false,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@service/*": ["service/*"],
+      "@widget/*": ["widget/*"],
+      "@lib/*": ["lib/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", "@girs"]
+}
