@@ -1,0 +1,55 @@
+@use "variables" as *;
+@use "glass" as *;
+
+.notification-window {
+	background: transparent;
+}
+
+.notification {
+	@include glass($glass-alpha-heavy, $radius);
+	margin: $sp-2 $sp-3 0 0;
+	padding: $sp-3;
+	min-width: 380px;
+
+	.app-icon {
+		border-radius: $radius-sm;
+	}
+
+	.summary {
+		font-weight: 600;
+		font-size: $fs-base;
+	}
+
+	.app {
+		color: $text-faint;
+		font-size: $fs-xs;
+	}
+
+	.body {
+		color: $text-muted;
+		font-size: $fs-md;
+		line-height: 1.45;
+	}
+
+	.action {
+		@include glass-interactive($radius-sm);
+		padding: $sp-1 $sp-3;
+		font-size: $fs-sm;
+	}
+
+	.close {
+		@include icon-button(22px);
+	}
+
+	&.critical {
+		border-color: rgba(233, 115, 102, 0.5);
+		box-shadow:
+			inset 0 1px 0 $highlight,
+			0 0 0 1px rgba(233, 115, 102, 0.18),
+			$shadow-lg;
+	}
+
+	&.low {
+		opacity: 0.92;
+	}
+}

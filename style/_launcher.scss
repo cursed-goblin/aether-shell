@@ -1,0 +1,54 @@
+@use "variables" as *;
+@use "glass" as *;
+
+.launcher-window {
+	background: transparent;
+}
+
+.launcher {
+	@include glass($glass-alpha-heavy, $radius-lg);
+	margin-top: 90px;
+	padding: $sp-3;
+	min-width: 640px;
+}
+
+.launcher-search {
+	@include glass-thin($radius);
+	padding: $sp-3 $sp-4;
+	color: $text-faint;
+
+	entry {
+		font-size: $fs-lg;
+	}
+}
+
+.ai-hint {
+	@include glass-accent($radius-sm);
+	margin-top: $sp-2;
+	padding: $sp-2 $sp-3;
+	font-size: $fs-md;
+}
+
+.launcher-results {
+	margin-top: $sp-2;
+	min-height: 320px;
+
+	.result {
+		padding: $sp-2 $sp-3;
+		border-radius: $radius-sm;
+
+		&:hover {
+			background-color: $glass-hover;
+		}
+
+		.name {
+			font-size: $fs-base;
+			font-weight: 500;
+		}
+
+		.desc {
+			color: $text-faint;
+			font-size: $fs-sm;
+		}
+	}
+}

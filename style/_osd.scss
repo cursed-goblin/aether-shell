@@ -1,0 +1,23 @@
+@use "variables" as *;
+@use "glass" as *;
+
+.osd-window {
+	background: transparent;
+}
+
+.osd {
+	@include glass($glass-alpha-heavy, $radius-pill);
+	margin-bottom: 110px;
+	padding: $sp-3 $sp-4;
+
+	.osd-bar {
+		min-height: 6px;
+	}
+
+	.osd-value {
+		color: $text-muted;
+		font-family: $font-mono;
+		font-size: $fs-sm;
+		min-width: 38px;
+	}
+}

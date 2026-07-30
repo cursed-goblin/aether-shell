@@ -1,0 +1,80 @@
+@use "variables" as *;
+
+// ---------------------------------------------------------------------------
+// Glassmorphism primitives
+//
+// Three ingredients make GTK glass convincing:
+//   1. a translucent fill                (here)
+//   2. a 1px light border + inner lip    (here)
+//   3. an actual compositor blur behind  (config/hyprland/blur.conf)
+//
+// Skip #3 and it just looks like a grey box. The layer namespaces in
+// blur.conf must match the `namespace=` set on each window.
+// ---------------------------------------------------------------------------
+
+@mixin glass($alpha: $glass-alpha, $radius-size: $radius) {
+	background-color: rgba(22, 20, 40, $alpha);
+	border: 1px solid $border;
+	border-radius: $radius-size;
+	box-shadow:
+		inset 0 1px 0 $highlight,
+		$shadow-sm,
+		$shadow-lg;
+}
+
+@mixin glass-heavy($radius-size: $radius) {
+	@include glass($glass-alpha-heavy, $radius-size);
+}
+
+@mixin glass-thin($radius-size: $radius-sm) {
+	background-color: $glass-light;
+	border: 1px solid $border;
+	border-radius: $radius-size;
+}
+
+// Interactive surface sitting on glass (tiles, list rows, buttons).
+@mixin glass-interactive($radius-size: $radius-sm) {
+	@include glass-thin($radius-size);
+	transition: background-color $transition, border-color $transition;
+
+	&:hover {
+		background-color: $glass-hover;
+		border-color: $border-strong;
+	}
+
+	&:active {
+		background-color: $glass-active;
+	}
+}
+
+// The "on" state for toggles - accent-tinted glass, never flat fill.
+@mixin glass-accent($radius-size: $radius-sm) {
+	background-image: linear-gradient(
+		120deg,
+		rgba(122, 168, 255, 0.32),
+		rgba(169, 139, 245, 0.22)
+	);
+	border: 1px solid rgba(150, 160, 255, 0.34);
+	border-radius: $radius-size;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.20);
+}
+
+@mixin accent-gradient {
+	background-image: linear-gradient(140deg, $accent, $accent-2);
+}
+
+@mixin icon-button($size: 28px) {
+	min-width: $size;
+	min-height: $size;
+	padding: 0;
+	border-radius: $radius-sm;
+	background: transparent;
+	border: none;
+	color: $text-muted;
+	transition: background-color $transition, color $transition;
+
+	&:hover {
+		background-color: $glass-hover;
+		color: $text;
+	}
+}
