@@ -1,0 +1,136 @@
+#!/usr/bin/env bash
+# Aether Shell launcher + CLI
+#
+#   aether-shell              start the shell
+#   aether-shell setup        store an API key (interactive, never echoed)
+#   aether-shell ai "..."     send a prompt to the running shell
+#   aether-shell toggle X     toggle launcher | control-center | ai
+#   aether-shell reload       reload config + stylesheet
+#   aether-shell doctor       check dependencies and key resolution
+
+set -euo pipefail
+
+INSTANCE="aether"
+SHARE_DIR="${AETHER_SHARE_DIR:-/usr/share/aether-shell}"
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/aether"
+SECRETS_FILE="$CONFIG_DIR/secrets.json"
+
+die() { printf '\033[31m%s\033[0m\n' "$*" >&2; exit 1; }
+info() { printf '\033[36m%s\033[0m\n' "$*"; }
+ok() { printf '\033[32m%s\033[0m\n' "$*"; }
+
+cmd_setup() {
+  mkdir -p "$CONFIG_DIR"
+  chmod 700 "$CONFIG_DIR"
+
+  echo "Providers: xai (Grok, default), openai, anthropic, gemini, groq,"
+  echo "           openrouter, deepseek, mistral, ollama, llamacpp, custom"
+  read -r -p "Provider [xai]: " provider
+  provider="${provider:-xai}"
+
+  # -s = no echo. The key never lands in your shell history or in ps output.
+  read -r -s -p "API key for $provider: " key
+  echo
+  [ -n "$key" ] || die "No key entered."
+
+  if command -v secret-tool >/dev/null 2>&1; then
+    read -r -p "Store in system keyring instead of a file? [Y/n]: " useKeyring
+    if [[ ! "${useKeyring:-y}" =~ ^[Nn] ]]; then
+      printf '%s' "$key" | secret-tool store --label="Aether Shell ($provider)" \
+        service aether-shell provider "$provider"
+      ok "Stored in keyring."
+      cmd_set_provider "$provider"
+      return
+    fi
+  fi
+
+  if [ -f "$SECRETS_FILE" ] && command -v jq >/dev/null 2>&1; then
+    tmp=$(mktemp)
+    jq --arg p "$provider" --arg k "$key" '.[$p] = $k' "$SECRETS_FILE" > "$tmp"
+    mv "$tmp" "$SECRETS_FILE"
+  else
+    printf '{\n  "%s": "%s"\n}\n' "$provider" "$key" > "$SECRETS_FILE"
+  fi
+
+  chmod 600 "$SECRETS_FILE"
+  ok "Stored in $SECRETS_FILE (mode 600)."
+  cmd_set_provider "$provider"
+}
+
+cmd_set_provider() {
+  local provider="$1"
+  local cfg="$CONFIG_DIR/config.json"
+
+  if command -v jq >/dev/null 2>&1; then
+    [ -f "$cfg" ] || echo '{}' > "$cfg"
+    tmp=$(mktemp)
+    jq --arg p "$provider" '.ai.provider = $p' "$cfg" > "$tmp"
+    mv "$tmp" "$cfg"
+    info "Active provider set to $provider."
+  else
+    info "Install jq, or set ai.provider to \"$provider\" in $cfg manually."
+  fi
+
+  astal -i "$INSTANCE" reload >/dev/null 2>&1 || true
+}
+
+cmd_doctor() {
+  local missing=0
+
+  echo "Runtime"
+  for dep in gjs ags astal curl; do
+    if command -v "$dep" >/dev/null 2>&1; then
+      ok "  $dep"
+    else
+      printf '\033[31m  %s (missing)\033[0m\n' "$dep"; missing=1
+    fi
+  done
+
+  echo "Optional"
+  for dep in jq secret-tool wl-paste brightnessctl wlsunset; do
+    if command -v "$dep" >/dev/null 2>&1; then
+      ok "  $dep"
+    else
+      printf '  %s (not found)\n' "$dep"
+    fi
+  done
+
+  echo "API key resolution"
+  for var in XAI_API_KEY OPENAI_API_KEY ANTHROPIC_API_KEY GEMINI_API_KEY \
+             GROQ_API_KEY OPENROUTER_API_KEY DEEPSEEK_API_KEY MISTRAL_API_KEY; do
+    if [ -n "${!var:-}" ]; then ok "  env $var set"; fi
+  done
+  if command -v secret-tool >/dev/null 2>&1 && \
+     secret-tool lookup service aether-shell provider xai >/dev/null 2>&1; then
+    ok "  keyring entry for xai"
+  fi
+  [ -f "$SECRETS_FILE" ] && ok "  $SECRETS_FILE present"
+
+  echo "Compositor blur (glassmorphism)"
+  if [ -n "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
+    if hyprctl getoption decoration:blur:enabled 2>/dev/null | grep -q 'int: 1'; then
+      ok "  blur enabled"
+    else
+      printf '\033[33m  blur is OFF - the shell will look flat.\033[0m\n'
+      printf '  source = %s/config/hyprland/blur.conf in your hyprland.conf\n' "$SHARE_DIR"
+    fi
+  else
+    printf '  Not on Hyprland - enable your compositor'"'"'s blur for layer surfaces.\n'
+  fi
+
+  return $missing
+}
+
+case "${1:-run}" in
+  run|"")        exec ags run "${SHARE_DIR}" --gtk4 ;;
+  setup)         cmd_setup ;;
+  doctor)        cmd_doctor ;;
+  ai)            shift; astal -i "$INSTANCE" ai "$*" ;;
+  toggle|open|close)
+                 astal -i "$INSTANCE" "$1" "${2:-launcher}" ;;
+  reload)        astal -i "$INSTANCE" reload ;;
+  quit)          astal -i "$INSTANCE" quit 2>/dev/null || pkill -f 'ags.*aether' ;;
+  -h|--help|help)
+                 sed -n '2,12p' "$0" | sed 's/^# \{0,1\}//' ;;
+  *)             die "Unknown command: $1  (try: aether-shell help)" ;;
+esac
