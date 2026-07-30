@@ -6,7 +6,9 @@
 
 GTK4 \u00b7 gtk4-layer-shell \u00b7 Astal/AGS \u00b7 TypeScript \u00b7 SCSS
 
-<img src="assets/screenshots/overview.png" width="860">
+<img src="assets/screenshots/overview.svg" width="880" alt="Aether Shell overview">
+
+<sub>Design reference for the shell. Replace with a real screenshot of your own setup once you have it running.</sub>
 
 </div>
 
