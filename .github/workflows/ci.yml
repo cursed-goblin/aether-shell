@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint and validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate JSON config
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y jq
+          jq -e . config/default.json > /dev/null
+          echo "config/default.json is valid"
+
+      - name: Shellcheck
+        run: |
+          sudo apt-get install -y shellcheck
+          shellcheck -S warning bin/aether-shell scripts/check-deps.sh
+
+      - name: Bash syntax
+        run: |
+          bash -n bin/aether-shell
+          bash -n scripts/check-deps.sh
+
+      - name: Compile SCSS
+        run: |
+          npm install -g sass
+          sass --no-source-map style/main.scss /tmp/main.css
+          echo "stylesheet compiles"
+
+      - name: Reject committed secrets
+        run: |
+          if git ls-files | xargs grep -nE '(sk-|xai-|sk-ant-|gsk_|AIza)[A-Za-z0-9_-]{20,}' ; then
+            echo "::error::Possible API key committed"
+            exit 1
+          fi
+          echo "no secrets found"
+
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    continue-on-error: true # GJS/Astal typings are not installable on CI runners yet
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --no-audit --no-fund
+      - run: npx tsc --noEmit
