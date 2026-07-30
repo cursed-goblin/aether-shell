@@ -1,0 +1,128 @@
+@use "variables" as *;
+@use "glass" as *;
+
+.cc-window {
+	background: transparent;
+}
+
+.cc {
+	@include glass($glass-alpha-heavy, $radius-lg);
+	margin: $sp-2 $sp-3 0 0;
+	padding: $sp-4;
+	min-width: 400px;
+}
+
+.cc-head {
+	.avatar {
+		border-radius: $radius-pill;
+		background-color: $glass-light;
+		padding: $sp-1;
+	}
+
+	.name {
+		font-weight: 600;
+	}
+
+	.meta {
+		color: $text-faint;
+		font-size: $fs-sm;
+	}
+
+	.icon-btn {
+		@include icon-button(28px);
+
+		&.danger:hover {
+			color: $danger;
+		}
+	}
+}
+
+.section-title {
+	color: $text-muted;
+	font-size: $fs-sm;
+	font-weight: 600;
+	letter-spacing: 0.6px;
+	text-transform: uppercase;
+}
+
+.section-note {
+	color: $positive;
+	font-size: $fs-xs;
+}
+
+.tile {
+	@include glass-interactive($radius);
+	padding: $sp-3;
+
+	.tile-icon {
+		color: $text-muted;
+	}
+
+	.t {
+		font-size: $fs-md;
+		font-weight: 500;
+	}
+
+	.s {
+		color: $text-faint;
+		font-size: $fs-xs;
+	}
+
+	&.on {
+		@include glass-accent($radius);
+
+		.tile-icon {
+			color: #fff;
+		}
+
+		.s {
+			color: rgba(255, 255, 255, 0.78);
+		}
+	}
+}
+
+.slider-row {
+	@include glass-thin($radius);
+	padding: $sp-2 $sp-3;
+	color: $text-muted;
+}
+
+.sysmon {
+	.ring {
+		@include glass-thin($radius);
+		padding: $sp-3 $sp-2;
+
+		.ring-bar {
+			min-height: 5px;
+		}
+
+		.ring-value {
+			font-size: $fs-lg;
+			font-weight: 600;
+		}
+
+		.ring-label {
+			color: $text-muted;
+			font-size: $fs-xs;
+			letter-spacing: 0.4px;
+			text-transform: uppercase;
+		}
+
+		.ring-sub {
+			color: $text-faint;
+			font-size: $fs-xs;
+		}
+
+		&.memory .ring-bar block.filled {
+			background-image: linear-gradient(140deg, $accent-2, $accent);
+		}
+
+		&.disk .ring-bar block.filled {
+			background-image: linear-gradient(140deg, $attention, $accent-2);
+		}
+
+		&.network .ring-bar block.filled {
+			background-image: linear-gradient(140deg, $positive, $accent);
+		}
+	}
+}
