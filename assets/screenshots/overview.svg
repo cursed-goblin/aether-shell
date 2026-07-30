@@ -1,0 +1,260 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" width="1440" height="900" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#1b1533"/>
+      <stop offset="0.45" stop-color="#3b2350"/>
+      <stop offset="0.72" stop-color="#7a3b63"/>
+      <stop offset="1" stop-color="#e08a5a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7aa8ff"/>
+      <stop offset="1" stop-color="#a98bf5"/>
+    </linearGradient>
+    <linearGradient id="lip" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="0.06" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <g id="glassdefs"/>
+  </defs>
+
+  <!-- wallpaper -->
+  <rect width="1440" height="900" fill="url(#wall)"/>
+  <circle cx="1080" cy="690" r="90" fill="#ffb27a" opacity="0.75" filter="url(#glow)"/>
+  <path d="M0 720 L250 520 L430 690 L620 470 L900 760 L1130 600 L1440 800 L1440 900 L0 900 Z" fill="#2a1c3c" opacity="0.85"/>
+  <path d="M0 810 L300 660 L560 830 L860 690 L1160 850 L1440 760 L1440 900 L0 900 Z" fill="#180f28" opacity="0.9"/>
+
+  <!-- top bar -->
+  <g>
+    <rect x="0" y="0" width="1440" height="40" fill="#161428" fill-opacity="0.55"/>
+    <rect x="0" y="0" width="1440" height="40" fill="url(#lip)"/>
+    <line x1="0" y1="39.5" x2="1440" y2="39.5" stroke="#ffffff" stroke-opacity="0.14"/>
+    <circle cx="26" cy="20" r="7" fill="url(#accent)"/>
+    <text x="42" y="25" fill="#fff" font-size="13" font-weight="600">Aether OS</text>
+    <g fill="#ffffff" fill-opacity="0.10">
+      <rect x="128" y="11" width="34" height="18" rx="9"/>
+      <rect x="168" y="11" width="22" height="18" rx="9"/>
+      <rect x="196" y="11" width="22" height="18" rx="9"/>
+    </g>
+    <rect x="128" y="11" width="34" height="18" rx="9" fill="url(#accent)" fill-opacity="0.35"/>
+    <text x="140" y="24" fill="#fff" font-size="11">1</text>
+    <text x="176" y="24" fill="#fff" fill-opacity="0.5" font-size="11">2</text>
+    <text x="204" y="24" fill="#fff" fill-opacity="0.5" font-size="11">3</text>
+    <text x="660" y="25" fill="#fff" font-size="12" font-weight="600">Wed 14 May</text>
+    <text x="748" y="25" fill="#fff" fill-opacity="0.7" font-size="12">21:42</text>
+    <g fill="#fff" fill-opacity="0.65" font-size="11">
+      <text x="1210" y="25">Wi-Fi</text>
+      <text x="1260" y="25">BT</text>
+      <text x="1292" y="25">Vol</text>
+      <text x="1330" y="25">86%</text>
+    </g>
+    <circle cx="1400" cy="20" r="9" fill="#ffffff" fill-opacity="0.10"/>
+  </g>
+
+  <!-- sidebar -->
+  <g>
+    <rect x="20" y="60" width="250" height="790" rx="18" fill="#161428" fill-opacity="0.68" stroke="#ffffff" stroke-opacity="0.14"/>
+    <rect x="20" y="60" width="250" height="790" rx="18" fill="url(#lip)"/>
+    <circle cx="56" cy="98" r="18" fill="url(#accent)"/>
+    <text x="84" y="94" fill="#fff" font-size="13" font-weight="600">Rye Talos</text>
+    <text x="84" y="110" fill="#fff" fill-opacity="0.45" font-size="10">rye@aetheros.local</text>
+    <rect x="38" y="132" width="214" height="32" rx="14" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.14"/>
+    <text x="56" y="152" fill="#fff" fill-opacity="0.42" font-size="11">Search</text>
+    <g font-size="12">
+      <rect x="38" y="180" width="214" height="32" rx="9" fill="url(#accent)" fill-opacity="0.28" stroke="#96a0ff" stroke-opacity="0.34"/>
+      <text x="58" y="201" fill="#fff">Home</text>
+      <text x="58" y="237" fill="#fff" fill-opacity="0.62">Applications</text>
+      <text x="58" y="273" fill="#fff" fill-opacity="0.62">Files</text>
+      <text x="58" y="309" fill="#fff" fill-opacity="0.62">Terminal</text>
+      <text x="58" y="345" fill="#fff" fill-opacity="0.62">AI Agent</text>
+      <rect x="140" y="332" width="34" height="16" rx="8" fill="url(#accent)"/>
+      <text x="147" y="344" fill="#0f0d1a" font-size="9" font-weight="700">NEW</text>
+      <text x="58" y="381" fill="#fff" fill-opacity="0.62">Settings</text>
+    </g>
+    <text x="40" y="418" fill="#fff" fill-opacity="0.35" font-size="9" letter-spacing="1">PLACES</text>
+    <g font-size="11" fill="#fff" fill-opacity="0.55">
+      <text x="58" y="442">Documents</text>
+      <text x="58" y="466">Downloads</text>
+      <text x="58" y="490">Pictures</text>
+    </g>
+    <rect x="38" y="506" width="214" height="110" rx="14" fill="#2c2245" stroke="#ffffff" stroke-opacity="0.14"/>
+    <path d="M38 586 L100 540 L150 590 L196 556 L252 600 L252 602 Q252 616 238 616 L52 616 Q38 616 38 602 Z" fill="#4b3a6b"/>
+    <text x="52" y="606" fill="#fff" font-size="10">Mount Hood</text>
+    <rect x="38" y="632" width="214" height="64" rx="14" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.14"/>
+    <text x="56" y="662" fill="#fff" font-size="20" font-weight="600">26\u00b0C</text>
+    <text x="56" y="680" fill="#fff" fill-opacity="0.45" font-size="10">Clear \u00b7 Bengaluru</text>
+    <rect x="38" y="712" width="214" height="72" rx="14" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.14"/>
+    <rect x="50" y="724" width="48" height="48" rx="10" fill="url(#accent)" fill-opacity="0.6"/>
+    <text x="108" y="744" fill="#fff" font-size="11">Midnight Dreams</text>
+    <text x="108" y="760" fill="#fff" fill-opacity="0.45" font-size="10">The Cranberries</text>
+    <rect x="108" y="768" width="130" height="4" rx="2" fill="#ffffff" fill-opacity="0.16"/>
+    <rect x="108" y="768" width="72" height="4" rx="2" fill="url(#accent)"/>
+  </g>
+
+  <!-- files window -->
+  <g>
+    <rect x="296" y="92" width="560" height="420" rx="18" fill="#161428" fill-opacity="0.68" stroke="#ffffff" stroke-opacity="0.14"/>
+    <rect x="296" y="92" width="560" height="420" rx="18" fill="url(#lip)"/>
+    <text x="320" y="122" fill="#fff" font-size="13" font-weight="600">Files</text>
+    <circle cx="812" cy="117" r="6" fill="#ffffff" fill-opacity="0.18"/>
+    <circle cx="832" cy="117" r="6" fill="#e97366" fill-opacity="0.8"/>
+    <line x1="296" y1="140" x2="856" y2="140" stroke="#ffffff" stroke-opacity="0.12"/>
+    <text x="320" y="166" fill="#fff" fill-opacity="0.4" font-size="9" letter-spacing="1">QUICK ACCESS</text>
+    <g>
+      <rect x="320" y="180" width="124" height="58" rx="12" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.14"/>
+      <rect x="456" y="180" width="124" height="58" rx="12" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.14"/>
+      <rect x="592" y="180" width="124" height="58" rx="12" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.14"/>
+      <rect x="728" y="180" width="104" height="58" rx="12" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.14"/>
+      <text x="336" y="215" fill="#fff" font-size="11">Documents</text>
+      <text x="472" y="215" fill="#fff" font-size="11">Projects</text>
+      <text x="608" y="215" fill="#fff" font-size="11">Music</text>
+      <text x="744" y="215" fill="#fff" font-size="11">Videos</text>
+    </g>
+    <text x="320" y="272" fill="#fff" fill-opacity="0.4" font-size="9" letter-spacing="1">RECENT FILES</text>
+    <g font-size="11">
+      <rect x="320" y="286" width="512" height="34" rx="9" fill="#ffffff" fill-opacity="0.05"/>
+      <text x="336" y="307" fill="#fff" fill-opacity="0.85">shell.tsx</text>
+      <text x="760" y="307" fill="#fff" fill-opacity="0.35">2 min ago</text>
+      <rect x="320" y="326" width="512" height="34" rx="9" fill="#ffffff" fill-opacity="0.05"/>
+      <text x="336" y="347" fill="#fff" fill-opacity="0.85">variables.scss</text>
+      <text x="748" y="347" fill="#fff" fill-opacity="0.35">18 min ago</text>
+      <rect x="320" y="366" width="512" height="34" rx="9" fill="#ffffff" fill-opacity="0.05"/>
+      <text x="336" y="387" fill="#fff" fill-opacity="0.85">hyprland.conf</text>
+      <text x="764" y="387" fill="#fff" fill-opacity="0.35">1 hr ago</text>
+      <rect x="320" y="406" width="512" height="34" rx="9" fill="#ffffff" fill-opacity="0.05"/>
+      <text x="336" y="427" fill="#fff" fill-opacity="0.85">wallpaper.png</text>
+      <text x="756" y="427" fill="#fff" fill-opacity="0.35">3 hrs ago</text>
+      <rect x="320" y="446" width="512" height="34" rx="9" fill="#ffffff" fill-opacity="0.05"/>
+      <text x="336" y="467" fill="#fff" fill-opacity="0.85">notes.md</text>
+      <text x="760" y="467" fill="#fff" fill-opacity="0.35">yesterday</text>
+    </g>
+  </g>
+
+  <!-- aether ai panel -->
+  <g>
+    <rect x="886" y="70" width="430" height="470" rx="18" fill="#161428" fill-opacity="0.68" stroke="#ffffff" stroke-opacity="0.14"/>
+    <rect x="886" y="70" width="430" height="470" rx="18" fill="url(#lip)"/>
+    <circle cx="926" cy="104" r="15" fill="url(#accent)"/>
+    <text x="952" y="101" fill="#fff" font-size="13" font-weight="600">Aether AI</text>
+    <text x="952" y="116" fill="#fff" fill-opacity="0.45" font-size="10">grok-4 \u00b7 xAI</text>
+    <line x1="886" y1="136" x2="1316" y2="136" stroke="#ffffff" stroke-opacity="0.12"/>
+    <circle cx="1101" cy="196" r="34" fill="url(#accent)" filter="url(#glow)" opacity="0.8"/>
+    <circle cx="1101" cy="196" r="30" fill="url(#accent)"/>
+    <text x="1101" y="258" fill="#fff" font-size="22" font-weight="600" text-anchor="middle">Good evening, Rye</text>
+    <text x="1101" y="280" fill="#fff" fill-opacity="0.6" font-size="13" text-anchor="middle">How can I help with your system?</text>
+    <g>
+      <rect x="910" y="304" width="190" height="66" rx="14" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.14"/>
+      <rect x="1112" y="304" width="190" height="66" rx="14" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.14"/>
+      <rect x="910" y="382" width="190" height="66" rx="14" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.14"/>
+      <rect x="1112" y="382" width="190" height="66" rx="14" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.14"/>
+      <text x="928" y="334" fill="#fff" font-size="12">Debug my system</text>
+      <text x="928" y="351" fill="#fff" fill-opacity="0.4" font-size="10">Read recent errors</text>
+      <text x="1130" y="334" fill="#fff" font-size="12">Explain a command</text>
+      <text x="1130" y="351" fill="#fff" fill-opacity="0.4" font-size="10">From clipboard</text>
+      <text x="928" y="412" fill="#fff" font-size="12">Write a script</text>
+      <text x="928" y="429" fill="#fff" fill-opacity="0.4" font-size="10">Bash or Python</text>
+      <text x="1130" y="412" fill="#fff" font-size="12">Tune my rice</text>
+      <text x="1130" y="429" fill="#fff" fill-opacity="0.4" font-size="10">Colors and blur</text>
+    </g>
+    <rect x="910" y="472" width="392" height="44" rx="22" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.14"/>
+    <text x="934" y="499" fill="#fff" fill-opacity="0.42" font-size="12">Ask Aether anything\u2026</text>
+    <circle cx="1278" cy="494" r="15" fill="url(#accent)"/>
+  </g>
+
+  <!-- terminal -->
+  <g>
+    <rect x="296" y="544" width="430" height="300" rx="18" fill="#120f22" fill-opacity="0.78" stroke="#ffffff" stroke-opacity="0.14"/>
+    <rect x="296" y="544" width="430" height="300" rx="18" fill="url(#lip)"/>
+    <text x="320" y="572" fill="#fff" fill-opacity="0.6" font-size="11">rye@aether \u2014 zsh</text>
+    <line x1="296" y1="586" x2="726" y2="586" stroke="#ffffff" stroke-opacity="0.10"/>
+    <g font-family="JetBrains Mono, monospace" font-size="11">
+      <text x="320" y="612" fill="#72bc8f">\u276f neofetch</text>
+      <text x="320" y="636" fill="#7aa8ff">OS</text><text x="384" y="636" fill="#fff" fill-opacity="0.75">Aether OS x86_64</text>
+      <text x="320" y="656" fill="#7aa8ff">Kernel</text><text x="384" y="656" fill="#fff" fill-opacity="0.75">6.9.1-zen1</text>
+      <text x="320" y="676" fill="#7aa8ff">WM</text><text x="384" y="676" fill="#fff" fill-opacity="0.75">Hyprland</text>
+      <text x="320" y="696" fill="#7aa8ff">Shell</text><text x="384" y="696" fill="#fff" fill-opacity="0.75">aether-shell 0.1.0</text>
+      <text x="320" y="716" fill="#7aa8ff">Theme</text><text x="384" y="716" fill="#fff" fill-opacity="0.75">Aether Glass</text>
+      <text x="320" y="736" fill="#7aa8ff">CPU</text><text x="384" y="736" fill="#fff" fill-opacity="0.75">Ryzen 7 7840U</text>
+      <text x="320" y="756" fill="#7aa8ff">Memory</text><text x="384" y="756" fill="#fff" fill-opacity="0.75">7.4 GiB / 32 GiB</text>
+      <text x="320" y="788" fill="#72bc8f">\u276f aether-shell doctor</text>
+      <text x="320" y="808" fill="#fff" fill-opacity="0.6">all checks passed \u00b7 blur: on \u00b7 key: xai (xai-\u2022\u2022\u2022\u20224f2c)</text>
+      <text x="320" y="828" fill="#72bc8f">\u276f</text>
+      <rect x="332" y="818" width="7" height="13" fill="#72bc8f" opacity="0.8"/>
+    </g>
+  </g>
+
+  <!-- system monitor -->
+  <g>
+    <rect x="750" y="544" width="312" height="180" rx="18" fill="#161428" fill-opacity="0.68" stroke="#ffffff" stroke-opacity="0.14"/>
+    <rect x="750" y="544" width="312" height="180" rx="18" fill="url(#lip)"/>
+    <text x="772" y="572" fill="#fff" fill-opacity="0.6" font-size="10" letter-spacing="1">SYSTEM MONITOR</text>
+    <text x="1012" y="572" fill="#72bc8f" font-size="10">Live</text>
+    <g stroke-width="6" fill="none" stroke-linecap="round">
+      <circle cx="812" cy="640" r="26" stroke="#ffffff" stroke-opacity="0.12"/>
+      <circle cx="812" cy="640" r="26" stroke="#7aa8ff" stroke-dasharray="78 163" transform="rotate(-90 812 640)"/>
+      <circle cx="884" cy="640" r="26" stroke="#ffffff" stroke-opacity="0.12"/>
+      <circle cx="884" cy="640" r="26" stroke="#a98bf5" stroke-dasharray="57 163" transform="rotate(-90 884 640)"/>
+      <circle cx="956" cy="640" r="26" stroke="#ffffff" stroke-opacity="0.12"/>
+      <circle cx="956" cy="640" r="26" stroke="#de9255" stroke-dasharray="106 163" transform="rotate(-90 956 640)"/>
+      <circle cx="1026" cy="640" r="26" stroke="#ffffff" stroke-opacity="0.12"/>
+      <circle cx="1026" cy="640" r="26" stroke="#72bc8f" stroke-dasharray="33 163" transform="rotate(-90 1026 640)"/>
+    </g>
+    <g text-anchor="middle" font-size="13" font-weight="600" fill="#fff">
+      <text x="812" y="645">24%</text>
+      <text x="884" y="645">35%</text>
+      <text x="956" y="645">65%</text>
+      <text x="1026" y="645">20%</text>
+    </g>
+    <g text-anchor="middle" font-size="9" fill="#fff" fill-opacity="0.45" letter-spacing="0.6">
+      <text x="812" y="690">CPU</text>
+      <text x="884" y="690">MEMORY</text>
+      <text x="956" y="690">DISK</text>
+      <text x="1026" y="690">NETWORK</text>
+    </g>
+  </g>
+
+  <!-- control center -->
+  <g>
+    <rect x="1086" y="564" width="330" height="230" rx="18" fill="#161428" fill-opacity="0.68" stroke="#ffffff" stroke-opacity="0.14"/>
+    <rect x="1086" y="564" width="330" height="230" rx="18" fill="url(#lip)"/>
+    <text x="1108" y="592" fill="#fff" fill-opacity="0.6" font-size="10" letter-spacing="1">CONTROL CENTER</text>
+    <rect x="1108" y="606" width="140" height="58" rx="14" fill="url(#accent)" fill-opacity="0.30" stroke="#96a0ff" stroke-opacity="0.34"/>
+    <text x="1126" y="632" fill="#fff" font-size="12">Wi-Fi</text>
+    <text x="1126" y="649" fill="#fff" fill-opacity="0.7" font-size="10">aether-5G</text>
+    <rect x="1258" y="606" width="140" height="58" rx="14" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.14"/>
+    <text x="1276" y="632" fill="#fff" font-size="12">Bluetooth</text>
+    <text x="1276" y="649" fill="#fff" fill-opacity="0.4" font-size="10">Off</text>
+    <rect x="1108" y="678" width="290" height="36" rx="12" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.14"/>
+    <rect x="1146" y="694" width="230" height="5" rx="3" fill="#ffffff" fill-opacity="0.16"/>
+    <rect x="1146" y="694" width="150" height="5" rx="3" fill="url(#accent)"/>
+    <circle cx="1296" cy="696" r="6" fill="#fff"/>
+    <rect x="1108" y="726" width="290" height="36" rx="12" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.14"/>
+    <rect x="1146" y="742" width="230" height="5" rx="3" fill="#ffffff" fill-opacity="0.16"/>
+    <rect x="1146" y="742" width="96" height="5" rx="3" fill="url(#accent)"/>
+    <circle cx="1242" cy="744" r="6" fill="#fff"/>
+  </g>
+
+  <!-- dock -->
+  <g>
+    <rect x="520" y="836" width="400" height="56" rx="18" fill="#161428" fill-opacity="0.72" stroke="#ffffff" stroke-opacity="0.14"/>
+    <rect x="520" y="836" width="400" height="56" rx="18" fill="url(#lip)"/>
+    <g>
+      <rect x="538" y="846" width="36" height="36" rx="9" fill="#ffffff" fill-opacity="0.10"/>
+      <rect x="586" y="846" width="36" height="36" rx="9" fill="#ffffff" fill-opacity="0.10"/>
+      <rect x="634" y="846" width="36" height="36" rx="9" fill="#ffffff" fill-opacity="0.10"/>
+      <rect x="682" y="846" width="36" height="36" rx="9" fill="#ffffff" fill-opacity="0.10"/>
+      <rect x="730" y="846" width="36" height="36" rx="9" fill="#ffffff" fill-opacity="0.10"/>
+      <rect x="784" y="844" width="1" height="40" fill="#ffffff" fill-opacity="0.14"/>
+      <rect x="804" y="846" width="36" height="36" rx="9" fill="url(#accent)"/>
+      <rect x="852" y="846" width="36" height="36" rx="9" fill="#ffffff" fill-opacity="0.10"/>
+      <rect x="586" y="884" width="36" height="2" rx="1" fill="#7aa8ff"/>
+      <rect x="634" y="884" width="36" height="2" rx="1" fill="#7aa8ff"/>
+    </g>
+  </g>
+</svg>
