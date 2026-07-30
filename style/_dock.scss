@@ -1,0 +1,39 @@
+@use "variables" as *;
+@use "glass" as *;
+
+.dock-window {
+	background: transparent;
+}
+
+.dock {
+	@include glass($glass-alpha-heavy, $radius-lg);
+	padding: $sp-2 $sp-3;
+	margin: 0 0 $sp-4 0;
+}
+
+.dock .app {
+	min-width: 44px;
+	min-height: 44px;
+	border-radius: $radius-sm;
+	transition: background-color $transition;
+
+	&:hover {
+		background-color: $glass-hover;
+	}
+
+	&.running {
+		background-color: $glass-light;
+		border-bottom: 2px solid $accent;
+	}
+
+	&.ai {
+		@include glass-accent($radius-sm);
+		color: #fff;
+	}
+}
+
+.dock .dock-sep {
+	min-width: 1px;
+	margin: $sp-1 $sp-2;
+	background-color: $border;
+}

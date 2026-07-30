@@ -1,0 +1,109 @@
+@use "variables" as *;
+@use "glass" as *;
+
+.bar {
+	background: transparent;
+}
+
+.bar .bar-inner {
+	@include glass($glass-alpha, 0);
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	padding: 0 $sp-3;
+}
+
+.bar-section {
+	&.end {
+		margin-left: auto;
+	}
+}
+
+.bar-logo {
+	padding: $sp-1 $sp-2;
+	border-radius: $radius-sm;
+
+	.logo-mark {
+		color: $accent;
+	}
+
+	.logo-text {
+		font-weight: 600;
+		letter-spacing: 0.2px;
+	}
+
+	&:hover {
+		background-color: $glass-hover;
+	}
+}
+
+.workspaces .ws {
+	min-width: 24px;
+	min-height: 22px;
+	border-radius: $radius-pill;
+	color: $text-faint;
+	font-size: $fs-sm;
+	transition: all $transition;
+
+	&:hover {
+		background-color: $glass-hover;
+		color: $text;
+	}
+
+	&.active {
+		@include glass-accent($radius-pill);
+		min-width: 34px;
+		color: $text;
+	}
+}
+
+.active-window {
+	color: $text-muted;
+	font-size: $fs-md;
+}
+
+.clock {
+	padding: $sp-1 $sp-3;
+	border-radius: $radius-pill;
+
+	.date {
+		color: $text-muted;
+		font-size: $fs-md;
+	}
+
+	.time {
+		font-weight: 600;
+		font-size: $fs-md;
+	}
+
+	&:hover {
+		background-color: $glass-hover;
+	}
+}
+
+.tray .tray-item {
+	@include icon-button(24px);
+}
+
+.indicators {
+	@include glass-thin($radius-pill);
+	padding: $sp-1 $sp-3;
+	color: $text-muted;
+
+	&:hover {
+		background-color: $glass-hover;
+	}
+}
+
+.battery {
+	color: $text-muted;
+	font-size: $fs-md;
+}
+
+.power {
+	@include icon-button(26px);
+
+	&:hover {
+		color: $danger;
+	}
+}
